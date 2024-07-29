@@ -56,8 +56,7 @@ class LoginScreen extends StatelessWidget {
                         Navigator.of(context).pushReplacementNamed('/home');
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.white, // Beyaz renk
-                        onPrimary: Colors.blue[900], // Lacivert yazı rengi
+                        foregroundColor: Colors.blue[900], primary: Colors.white, // Lacivert yazı rengi
                         padding:
                             EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                         shape: RoundedRectangleBorder(

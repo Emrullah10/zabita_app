@@ -24,7 +24,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 // Örneğin, e-posta ile parola sıfırlama linki gönderme vb.
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue[900], // Lacivert renk
+                backgroundColor: Colors.blue[900], // Lacivert renk
               ),
               child: Text('Parola Sıfırla'),
             ),
