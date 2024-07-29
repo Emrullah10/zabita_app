@@ -8,8 +8,6 @@ class InspectionsProcess extends StatefulWidget {
 }
 
 class _InspectionsProcessState extends State<InspectionsProcess> {
-  String? _selectedOption = 'seçiniz';
-
   String? _selectedOption2 = 'seçiniz';
 
   @override
@@ -73,7 +71,6 @@ class _InspectionsProcessState extends State<InspectionsProcess> {
                 fontSize: 20,
               ),
             ),
-            
           ],
         ),
       ),

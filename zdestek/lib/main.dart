@@ -1,4 +1,6 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:zdestek/firebase_options.dart';
 import 'package:zdestek/home_screen.dart';
 import 'package:zdestek/pages/documents.dart';
 import 'package:zdestek/pages/inspections.dart';
@@ -7,7 +9,12 @@ import 'package:zdestek/pages/login_screen.dart';
 import 'package:zdestek/pages/reset_password.dart';
 import 'package:zdestek/pages/splash_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(MyApp());
 }
 

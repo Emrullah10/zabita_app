@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "889968795344",
+    "project_id": "zabitaapp-69afb",
+    "storage_bucket": "zabitaapp-69afb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889968795344:android:975522bc8d759812e248d5",
+        "android_client_info": {
+          "package_name": "com.example.zdestek"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoNFWVRq2EM7cWQhkcijUB3Rks2vnrqKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

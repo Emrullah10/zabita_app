@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:zdestek/services/auth_service.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  bool _obscureText = true;
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -13,8 +24,7 @@ class LoginScreen extends StatelessWidget {
             child: Container(
               color: Colors.white,
               child: Center(
-                child: Image.asset(
-                    'assets/logo.png'), // Logo dosyasının konumu
+                child: Image.asset('assets/logo.png'), // Logo dosyasının konumu
               ),
             ),
           ),
@@ -37,26 +47,55 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 20),
                     // Kullanıcı Adı alanı
                     TextField(
+                      controller: _emailController,
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Colors.white,
-                        labelText: 'Kullanıcı Adı',
+                        labelText: 'E-posta',
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                       ),
                     ),
                     SizedBox(height: 20),
+                    TextField(
+                      controller: _passwordController,
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        labelText: 'Şifre',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscureText
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Colors.grey,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _obscureText = !_obscureText;
+                            });
+                          },
+                        ),
+                      ),
+                      obscureText: _obscureText,
+                    ),
                     // Şifre alanı ve göster/gizle butonu
-                    PasswordField(),
+
                     SizedBox(height: 20),
                     // Giriş Yap butonu
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).pushReplacementNamed('/home');
+                      onPressed: () async {
+                        // Giriş yapma işlemi
+                        await AuthService().signIn(
+                            _emailController.text, _passwordController.text);
                       },
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.blue[900], primary: Colors.white, // Lacivert yazı rengi
+                        foregroundColor: Colors.blue[900],
+                        primary: Colors.white, // Lacivert yazı rengi
                         padding:
                             EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                         shape: RoundedRectangleBorder(
@@ -86,42 +125,6 @@ class LoginScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-// Şifre alanı ve göster/gizle butonu için özel widget
-class PasswordField extends StatefulWidget {
-  @override
-  _PasswordFieldState createState() => _PasswordFieldState();
-}
-
-class _PasswordFieldState extends State<PasswordField> {
-  bool _obscureText = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white,
-        labelText: 'Şifre',
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        suffixIcon: IconButton(
-          icon: Icon(
-            _obscureText ? Icons.visibility : Icons.visibility_off,
-            color: Colors.grey,
-          ),
-          onPressed: () {
-            setState(() {
-              _obscureText = !_obscureText;
-            });
-          },
-        ),
-      ),
-      obscureText: _obscureText,
     );
   }
 }
