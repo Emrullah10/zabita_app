@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zdestek/home_screen.dart';
 import 'package:zdestek/pages/documents.dart';
+import 'package:zdestek/pages/inspections.dart';
 import 'package:zdestek/pages/kabahatlar.dart';
 import 'package:zdestek/pages/login_screen.dart';
 import 'package:zdestek/pages/reset_password.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/reset_password': (context) => ResetPasswordScreen(),
         '/kabahatlar': (context) => Kabahatlar(),
         '/documents': (context) => Documents(),
+        '/inspections': (context) => InspectionPage(),
       },
     );
   }

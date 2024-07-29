@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(width: 30),
                     _BuildIconItems(
                         navigateToPage: (context) {
-                          Navigator.pushNamed(context, 'page3');
+                          Navigator.pushNamed(context, '/inspections');
                         },
                         assetPath: 'assets/belge.png',
                         description: 'Son Denetimler'),
