@@ -12,6 +12,7 @@ import 'package:zdestek/pages/general_scaning_page.dart';
 import 'package:zdestek/pages/login_screen.dart';
 import 'package:zdestek/models/pie_data.dart';
 import 'package:zdestek/pages/people_complaints.dart';
+import 'package:zdestek/services/auth_service.dart';
 import 'package:zdestek/widgets/pie_chart_widget.dart';
 import 'package:flexible_scrollbar/flexible_scrollbar.dart';
 
@@ -292,7 +293,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     }).toList(),
-                    onChanged: (String? newValue) {
+                    onChanged: (String? newValue) async {
                       setState(() {
                         _dropdownValue = newValue;
                       });
@@ -301,13 +302,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       } else if (newValue == 'Ayarlar') {
                         // Ayarlar sayfasına yönlendirme kodu
                       } else if (newValue == 'Çıkış Yap') {
-                        // Çıkış yapma ve giriş sayfasına yönlendirme kodu
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  LoginScreen()), // LoginScreen yer tutucu, kendi giriş ekranı kodunu ekleyin
-                        );
+                        // Çıkış yapma ve giriş sayfasına yönlendirme
+
+                        await AuthService().signOut(context);
                       }
                     },
                   ),
