@@ -90,12 +90,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     ElevatedButton(
                       onPressed: () async {
                         // Giriş yapma işlemi
-                        await AuthService().signIn(
-                            _emailController.text, _passwordController.text);
+                        await AuthService().signIn(_emailController.text,
+                            _passwordController.text, context);
                       },
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: Colors.blue[900],
-                        primary: Colors.white, // Lacivert yazı rengi
+                        foregroundColor: Colors.blue[900], backgroundColor: Colors.white, // Lacivert yazı rengi
                         padding:
                             EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                         shape: RoundedRectangleBorder(

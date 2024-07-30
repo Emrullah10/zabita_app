@@ -21,11 +21,13 @@ class AuthService {
     }
   }
 
-  Future<void> signIn(String email, String password) async {
+  Future<void> signIn(String email, String password,BuildContext context) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       print('Giriş başarılı: ${userCredential.user}');
+      NavigationPage.navigateToPage(context, '/home');
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('Kullanıcı bulunamadı.');
